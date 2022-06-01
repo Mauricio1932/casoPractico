@@ -1,19 +1,22 @@
-
-
 public class Cajero  {
-    Tienda tienda = new Tienda();
+    
 
+    static int total;
+    
+    public Cajero(int total){
+        this.total = total;
+    }
 
-    private float total;
+    public void produtosScaner() {
+        
+    }
+    public  void totalApagar() {
 
-        public  void totalApagar() {
+        ticket();
+    }
 
-            ticket();
-        }
+    public static void ticket() {
+        System.out.println("el precio a paga es de: " + total);
+    }
 
-        public static void ticket() {
-
-        }
-
-        public float getTotal() { return total;}
 }

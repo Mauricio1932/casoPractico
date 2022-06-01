@@ -1,11 +1,9 @@
 public class CarritoDeCompra {
     private int codigoBar;
-
     private String nombre;
+    private int precio;
 
-    private float precio;
-
-    public CarritoDeCompra(int codigoBar,String nombre,float precio) { //Constructor para crear el objeto
+    public CarritoDeCompra(int codigoBar,String nombre,int precio) { //Constructor para crear el objeto
         this.codigoBar=codigoBar;
         this.nombre=nombre;
         this.precio=precio;
@@ -13,6 +11,6 @@ public class CarritoDeCompra {
     
     public int getCodigoBar(){ return codigoBar;}
     public String getNombre(){ return nombre;}
-    public float getPrecio(){ return precio;}
+    public int getPrecio(){ return precio;}
 
 }

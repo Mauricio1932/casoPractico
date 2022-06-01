@@ -19,6 +19,7 @@ public class Tienda {
     }
     
     public static void seleecionarProducto() {
+        int suma = 0;
         int opcion=0;
         String nombreProducto;
         int codigo,precio;
@@ -40,7 +41,18 @@ public class Tienda {
                         codigo = Integer.parseInt(producto[opcion-1][0]);
                         precio = Integer.parseInt(producto[opcion-1][2]);
                         System.out.println("Agregado "+ codigo);
+
                         carritoList.add(new CarritoDeCompras(codigo, nombreProducto, precio));
+                            for (int j = 0; j < producto.length; j++) {
+                                if(producto[j][1].equals(carritoList.get(opcion-1).getNombre())){
+                                    System.out.println("iguales");
+                                    suma  = Integer.parseInt(producto[j][3]);
+                                    suma  = suma + 1;
+                                    producto[j][3] = Integer.toString(suma);
+                                    //System.out.println(producto[j][1] +" "+producto[j][3]);
+                                }
+                            }
+                            
                     }else if (opcion == 6){
                         //visualizarPS();
                         pagar();
@@ -61,25 +73,29 @@ public class Tienda {
     }
 
     public static void pagar() {
-        int suma = 0;
-        boolean flag = false;
-        //arreglo 1 = nombre
-        for (int i = 0; i < carritoList.size(); i++) {
-            //System.out.println("nombre "+carritoList.get(i).getNombre());
+        int suma = 0, multiplicacion = 0, numero = 0, cantidad= 0;
+        Cajero cajero;
+        System.out.println("Codigo "+" "+" nombre");
+        for (int i = 0; i < carritoList.size(); i++){
+
+            for (int index = 0; index < carritoList.size(); index++) {
+                if(carritoList.get(i).getNombre().equals( carritoList.get(index).getNombre())){
+                    System.out.println("repite");
+                }
+            }
+            System.out.println(carritoList.get(i).getCodigoBar()+"    "+carritoList.get(i).getNombre());
             for (int j = 0; j < producto.length; j++) {
-                if(producto[j][1].equals(carritoList.get(i).getNombre())){
-                    System.out.println("iguales");
-                    suma  = Integer.parseInt(producto[j][3]);
-                    suma  = suma + 1;
-                    producto[j][3] = Integer.toString(suma);
-                    System.out.println(producto[j][1] +" "+producto[j][3]);
-                    flag = true;
+                cantidad = Integer.parseInt(producto[j][3]);
+                if (producto[j][1].equals(carritoList.get(i).getNombre()) && cantidad >= 1 ){
+                    numero = Integer.parseInt(producto[j][3]);
+                    multiplicacion = carritoList.get(i).getPrecio();
+                    suma = suma + multiplicacion;
                 }
             }
         }
-        if (flag == false){
-            System.out.println("NO hay produtos en carrito");
-        }
-            
+        System.out.println("helo "+suma);
+        cajero = new Cajero(suma);
+
+        cajero.ticket();
     }
 }
