@@ -1,83 +1,69 @@
-package com.upchiapas.practica02;
-import com.upchiapas.practica02.models.Cajero;
-import com.upchiapas.practica02.models.CarritoDeCompra;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Tienda {
-
+    
     static Scanner teclado = new Scanner(System.in); //Entrada por teclado
-
-    static CarritoDeCompra objetoCarritoDeCompra;
-    private static CarritoDeCompra listaProducto[];
-
-
+    static CarritoDeCompras carritoObjeto;
+    static List<CarritoDeCompras> carritoList = new LinkedList<CarritoDeCompras>();
+    
+    static String producto[][] = {{"1234","galleta","25"},
+    {"3456","Cheetos","10"},
+    {"2345","Jugo","15"},
+    {"4567","Yogurt","16"},
+    {"5678","Rocaleta","5"}};
+    
     public static void main(String[]args){
         seleecionarProducto();
     }
-
+    
     public static void seleecionarProducto() {
-        listaProducto = new CarritoDeCompra[5];
-        CarritoDeCompra producto1= new CarritoDeCompra(1234, "Galleta", 25);
-        CarritoDeCompra producto2= new CarritoDeCompra(2345, "Jugo", 15);
-        CarritoDeCompra producto3= new CarritoDeCompra(3456, "Cheetos", 10);
-        CarritoDeCompra producto4= new CarritoDeCompra(4567, "Yogurt",16 );
-        CarritoDeCompra producto5= new CarritoDeCompra(5678, "Rockaleta", 5);
-
-        int opcion=0; List<CarritoDeCompra> carrito=new LinkedList<CarritoDeCompra>();
+        int opcion=0;
+        String nombreProducto;
+        int codigo,precio;
 
         do{
-            for (int i=0; i<1; i++) {
+            do {
                 System.out.println("----------------------SELECIONE LA OPCION DESEADA-------------------");
-                System.out.println("Carrito No."+i);
-                System.out.println("1.  "+producto1.getCodigoBar()+" Nombre del producto: "+producto1.getNombre()+" Precio: "+producto1.getPrecio());
-                System.out.println("2.  "+producto2.getCodigoBar()+" Nombre del producto: "+producto2.getNombre()+" Precio: "+producto2.getPrecio());
-                System.out.println("3.  "+producto3.getCodigoBar()+" Nombre del producto: "+producto3.getNombre()+" Precio: "+producto3.getPrecio());
-                System.out.println("4.  "+producto4.getCodigoBar()+" Nombre del producto: "+producto4.getNombre()+" Precio: "+producto4.getPrecio());
-                System.out.println("5.  "+producto5.getCodigoBar()+" Nombre del producto: "+producto5.getNombre()+" Precio: "+producto5.getPrecio());
+                System.out.println("Num. seleccion\t Codigo\t producto\t Precio");
+                for (int i=0; i<5; i++) {
+                    System.out.println(i+"\t\t"+producto[i][0]+"\t"+producto[i][1]+"\t\t $"+producto[i][2]);
+                }
                 System.out.println("6.Mostrar los productos seleccionados");
-            }
                     System.out.println("opcion: ");
-                    opcion=teclado.nextInt();
-             switch (opcion) {
-                case 1:
-                carrito.add(new CarritoDeCompra(1234,"Galleta",25) );
-                    break;
-                case 2:
-                    carrito.add(new CarritoDeCompra(2345,"Jugo",115));
-                    break;
-                case 3:
-                    carrito.add(new CarritoDeCompra(3456,"Cheetos",10));
-                    break;
-                 case 4:
-                    carrito.add(new CarritoDeCompra(4567,"Yogurt",16));
-                     break;
-                 case 5:
-                     carrito.add(new CarritoDeCompra(5678,"Rockaleta",5));
-                     break;
-                 case 6:
-                     opcion=7;
-                     visualizarPS(opcion,carrito);
-                     break;
-                 case 7:
-                     System.out.println("GRACIAS POR UTILIZAR MI SISTEMA");
-                     break;
-                 default:
-                     System.out.println("Opcion incorrecta");
-                     break;
-            }
+                    opcion = teclado.nextInt();
+
+                if(opcion != 6 && opcion != 7){
+                    nombreProducto = producto[opcion-1][1];
+                    codigo = Integer.parseInt(producto[opcion-1][0]);
+                    precio = Integer.parseInt(producto[opcion-1][2]);
+                    System.out.println("Agregado "+ codigo);
+                    carritoList.add(new CarritoDeCompras(codigo, nombreProducto, precio));
+                }else if (opcion == 6){
+                    visualizarPS();
+                }
+            } while (opcion <1 || opcion>7);
         }while(opcion!=7);;
     }
-        public static CarritoDeCompra visualizarPS(int opcion, List <CarritoDeCompra>carrito){
-        for (CarritoDeCompra carritoDeCompra:carrito) {
-            System.out.println("Producto-------->"+" Codigo de barras: "+carritoDeCompra.getCodigoBar()+" Nombre: "+carritoDeCompra.getNombre()+" Precio: "+carritoDeCompra.getPrecio());
-        }
-            Cajero cajero =new Cajero(); //Inicializacion
-            return objetoCarritoDeCompra;for (CarritoDeCompra carritoDeCompra : carrito) {
-                cajero.totalApagar(List<Cajero> carrito); //Manda a llmar el metodo de la clase cajero
+
+    public static void visualizarPS(){
+        System.out.println("productos en carrito"); //Se quedaria hasta aca
+        if (carritoList.size() >= 1) {
+            System.out.println("\nCodigo\t producto\t Precio");
+            for (CarritoDeCompras carritoDeCompras:carritoList) {
+                System.out.println(carritoDeCompras.getCodigoBar() +"\t "+ carritoDeCompras.getNombre()+"\t "+carritoDeCompras.getPrecio());
+            
             }
-
-
+        } else {
+            System.out.println("No hay productos en el carrito");
         }
+    }
+
+    public static void pagar() {
+        Cajero caja = new Cajero();
+
+        
+
+    }
 }

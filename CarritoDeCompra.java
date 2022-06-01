@@ -1,5 +1,3 @@
-package com.upchiapas.practica02.models;
-
 public class CarritoDeCompra {
     private int codigoBar;
 
@@ -11,7 +9,8 @@ public class CarritoDeCompra {
         this.codigoBar=codigoBar;
         this.nombre=nombre;
         this.precio=precio;
-     }
+    }
+    
     public int getCodigoBar(){ return codigoBar;}
     public String getNombre(){ return nombre;}
     public float getPrecio(){ return precio;}
