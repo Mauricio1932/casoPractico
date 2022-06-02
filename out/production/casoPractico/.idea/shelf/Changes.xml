@@ -1,0 +1,14 @@
+<changelist name="Changes" date="1654098080132" recycled="false">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/shelved.patch" />
+  <option name="DESCRIPTION" value="Changes" />
+  <binary>
+    <option name="BEFORE_PATH" value="CarritoDeCompras.class" />
+    <option name="AFTER_PATH" value="CarritoDeCompras.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/CarritoDeCompras.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="Tienda.class" />
+    <option name="AFTER_PATH" value="Tienda.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Changes/Tienda.class" />
+  </binary>
+</changelist>
