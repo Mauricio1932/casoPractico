@@ -3,14 +3,12 @@
  */
 public class CarritoDeCompras {
 
-    float precio; 
-    int cantidad;
+    int  precio; 
     String nombre;
     int codigoBar;
 
-    public CarritoDeCompras(float precio, int cantidad, String nombre, int codigoBar) {
+    public CarritoDeCompras(int codigoBar, String nombre, int precio) {
         this.precio = precio;
-        this.cantidad = cantidad;
         this.nombre = nombre;
         this.codigoBar = codigoBar;
     }
@@ -19,12 +17,8 @@ public class CarritoDeCompras {
         return nombre;
     }
 
-    public float getPrecio() {
+    public int getPrecio() {
         return precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
     }
 
     public int getCodigoBar() {
