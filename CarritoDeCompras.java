@@ -24,4 +24,8 @@ public class CarritoDeCompras {
     public int getCodigoBar() {
         return codigoBar;
     }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
 }

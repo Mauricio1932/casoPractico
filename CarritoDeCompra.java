@@ -13,6 +13,8 @@ public class CarritoDeCompra {
     
     public int getCodigoBar(){ return codigoBar;}
     public String getNombre(){ return nombre;}
-    public float getPrecio(){ return precio;}
+    public float getPrecio(){ return precio;
+    }
+
 
 }

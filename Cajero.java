@@ -1,19 +1,14 @@
-
+import java.util.List;
 
 public class Cajero  {
-    Tienda tienda = new Tienda();
+    static int total;
 
+    public Cajero(int total){
+        this.total = total;
+    }
 
-    private float total;
+    public static void ticket() {
+        System.out.println("el precio a pagar es de: " + total);
+    }
 
-        public  void totalApagar() {
-
-            ticket();
-        }
-
-        public static void ticket() {
-
-        }
-
-        public float getTotal() { return total;}
 }
